@@ -4,12 +4,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X } from "lucide-react";
 
-// ============================================================================
-// WHATSAPP CONFIGURATION
-// ============================================================================
-const WHATSAPP_NUMBER = "918076620320"; // Replace with IDEOANS business number (including country code, without +)
-const DEFAULT_MESSAGE = "Hi IDEOANS! I am visiting your website and would love to discuss custom digital infrastructure solutions for my business.";
-
 export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
@@ -30,8 +24,6 @@ export default function WhatsAppWidget() {
     setIsOpen(false);
     setIsDismissed(true);
   };
-
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;
 
   return (
     <div 
@@ -89,7 +81,7 @@ export default function WhatsAppWidget() {
 
             {/* Direct Connect Link inside Card */}
             <a
-              href={whatsappUrl}
+              href="/api/whatsapp"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
@@ -103,7 +95,7 @@ export default function WhatsAppWidget() {
 
       {/* 🟩 FLOATING ACTION BUTTON */}
       <motion.a
-        href={whatsappUrl}
+        href="/api/whatsapp"
         target="_blank"
         rel="noopener noreferrer"
         className="pointer-events-auto relative group flex items-center justify-center w-14 h-14 rounded-full bg-neutral-900 border border-emerald-500/30 text-emerald-400 hover:text-white shadow-[0_8px_32px_rgba(0,0,0,0.6)] overflow-visible"

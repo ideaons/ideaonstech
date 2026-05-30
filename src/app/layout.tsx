@@ -62,6 +62,7 @@ export const viewport: Viewport = {
 import { ThemeProvider } from "next-themes";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import CustomCursor from "@/components/CustomCursor";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 export default function RootLayout({
   children,
@@ -78,6 +79,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <SmoothScrollProvider>
             <CustomCursor />
+            <WhatsAppWidget />
             <div className="relative z-10 w-full flex flex-col flex-grow">
               {children}
             </div>
@@ -87,3 +89,4 @@ export default function RootLayout({
     </html>
   );
 }
+

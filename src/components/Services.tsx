@@ -9,7 +9,7 @@ const SERVICES = [
     id: "01",
     title: "Website Systems",
     description:
-      "High-performance digital storefronts, landing pages, and web applications engineered for conversion and scale.",
+      "High-conversion websites that don't just look good — they generate leads. Speed-optimized, SEO-ranked, and engineered to turn visitors into customers.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
         <rect x="2" y="2" width="18" height="14" rx="2.5" stroke="currentColor" strokeWidth="1.8"/>
@@ -23,7 +23,7 @@ const SERVICES = [
     id: "02",
     title: "Marketing Systems",
     description:
-      "Integrated growth engines — SEO, performance ads, email automation, and full-funnel conversion frameworks.",
+      "SEO that gets you on page 1. Ad campaigns that actually convert. Email sequences that close deals. Full-funnel growth, tracked end-to-end.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
         <path d="M3 17L8 12L12 16L19 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
@@ -36,7 +36,7 @@ const SERVICES = [
     id: "03",
     title: "CRM Systems",
     description:
-      "Custom relationship management platforms — pipelines, dashboards, and client portals built for your workflow.",
+      "Stop managing clients in spreadsheets. Custom CRM portals with visual pipelines, automated follow-ups, and dashboards your team will actually use.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
         <circle cx="11" cy="8" r="3" stroke="currentColor" strokeWidth="1.8"/>
@@ -50,7 +50,7 @@ const SERVICES = [
     id: "04",
     title: "AI Automation",
     description:
-      "Deploy intelligent agents, automated workflows, and AI-powered processes that eliminate repetitive overhead.",
+      "AI agents that answer queries 24/7, qualify leads while you sleep, and automate the 500+ daily tasks your team shouldn't be doing manually.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
         <rect x="4" y="6" width="14" height="12" rx="2" stroke="currentColor" strokeWidth="1.8"/>
@@ -65,7 +65,7 @@ const SERVICES = [
     id: "05",
     title: "Lead Generation",
     description:
-      "Multi-channel acquisition systems — funnels, retargeting, and conversion-optimized lead capture at scale.",
+      "WhatsApp-first capture, retargeting funnels, automated nurture sequences, and conversion tracking — every lead accounted for, every rupee attributed.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
         <path d="M20 4L4 20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
@@ -79,7 +79,7 @@ const SERVICES = [
     id: "06",
     title: "Brand Systems",
     description:
-      "Cohesive visual identity — logos, design systems, motion guidelines, and brand strategy built to command attention.",
+      "More than a logo. Complete brand identity — visual systems, motion guidelines, typography, and brand strategy that makes your business instantly recognizable.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
         <polygon points="11,2 14,8 21,9 16,14 17,21 11,18 5,21 6,14 1,9 8,8" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
@@ -91,7 +91,7 @@ const SERVICES = [
     id: "07",
     title: "Analytics Systems",
     description:
-      "Real-time intelligence dashboards, attribution tracking, and data pipelines that turn metrics into decisions.",
+      "Stop guessing. Real-time dashboards showing exactly which campaigns work, which pages convert, and where your money goes — decisions backed by data, not instinct.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
         <rect x="3" y="14" width="4" height="5" rx="1" stroke="currentColor" strokeWidth="1.8"/>
@@ -105,7 +105,7 @@ const SERVICES = [
     id: "08",
     title: "Growth Infrastructure",
     description:
-      "End-to-end digital ecosystems — scalable architecture, integrations, and technology stacks engineered for growth.",
+      "The backend your ambition needs. Scalable architecture, third-party integrations, API development, and tech stacks that grow from 100 users to 100,000.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
         <path d="M4 12h4l3-8 4 16 3-8h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>

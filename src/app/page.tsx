@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import TrustedBy from "@/components/TrustedBy";
 import Services from "@/components/Services";
 import Industries from "@/components/Industries";
+import SpecializedSolutions from "@/components/SpecializedSolutions";
 import CaseStudies from "@/components/CaseStudies";
 import Process from "@/components/Process";
 import Technology from "@/components/Technology";
@@ -21,6 +22,7 @@ export default function Home() {
         <TrustedBy />
         <Services />
         <Industries />
+        <SpecializedSolutions />
         <CaseStudies />
         <Process />
         <Technology />

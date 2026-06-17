@@ -7,13 +7,31 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
+  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flashes/leaks on mount
 
   const posRef = useRef({ x: -100, y: -100 });
   const lerpPos = useRef({ x: -100, y: -100 });
   const rafRef = useRef<number>(0);
 
+  // 1. Listen for device changes
   useEffect(() => {
-    // 1. Force hide the browser's default cursor on all elements globally
+    const checkMobile = () => {
+      setIsMobile(
+        window.matchMedia("(max-width: 768px)").matches ||
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0
+      );
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // 2. Setup high-performance cursor handlers when not on mobile
+  useEffect(() => {
+    if (isMobile) return;
+
+    // Force hide the browser's default cursor on all elements globally for desktops
     const style = document.createElement("style");
     style.innerHTML = `
       * {
@@ -35,33 +53,43 @@ export default function CustomCursor() {
     const onDown  = () => setIsClicking(true);
     const onUp    = () => setIsClicking(false);
 
-    // Dynamic hover bindings for interactive elements
-    const addHoverListeners = () => {
-      const interactives = document.querySelectorAll<HTMLElement>(
-        "a, button, [role='button'], input, textarea, select, [data-cursor-hover]"
-      );
-      interactives.forEach((el) => {
-        el.addEventListener("mouseenter", () => setIsHovering(true));
-        el.addEventListener("mouseleave", () => setIsHovering(false));
-      });
+    // Event Delegation: high-performance check on mouseover/mouseout
+    const onMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        target &&
+        target.closest(
+          "a, button, [role='button'], input, textarea, select, [data-cursor-hover]"
+        )
+      ) {
+        setIsHovering(true);
+      }
     };
 
-    document.addEventListener("mousemove", onMove);
+    const onMouseOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        target &&
+        target.closest(
+          "a, button, [role='button'], input, textarea, select, [data-cursor-hover]"
+        )
+      ) {
+        setIsHovering(false);
+      }
+    };
+
+    document.addEventListener("mousemove", onMove, { passive: true });
     document.addEventListener("mouseleave", onLeave);
     document.addEventListener("mouseenter", onEnter);
     document.addEventListener("mousedown", onDown);
     document.addEventListener("mouseup", onUp);
+    document.addEventListener("mouseover", onMouseOver);
+    document.addEventListener("mouseout", onMouseOut);
 
-    // Initial query and observer to catch dynamically rendered elements
-    addHoverListeners();
-    const observer = new MutationObserver(addHoverListeners);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // 2. High-performance Fast Lerp Follow loop
+    // High-performance Fast Lerp Follow loop
     const animateCursor = () => {
       const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
       
-      // Buttery smooth, ultra-responsive follow
       lerpPos.current.x = lerp(lerpPos.current.x, posRef.current.x, 0.26);
       lerpPos.current.y = lerp(lerpPos.current.y, posRef.current.y, 0.26);
 
@@ -73,31 +101,19 @@ export default function CustomCursor() {
     rafRef.current = requestAnimationFrame(animateCursor);
 
     return () => {
-      document.head.removeChild(style);
+      if (document.head.contains(style)) {
+        document.head.removeChild(style);
+      }
       document.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
       document.removeEventListener("mouseenter", onEnter);
       document.removeEventListener("mousedown", onDown);
       document.removeEventListener("mouseup", onUp);
-      observer.disconnect();
+      document.removeEventListener("mouseover", onMouseOver);
+      document.removeEventListener("mouseout", onMouseOut);
       cancelAnimationFrame(rafRef.current);
     };
-  }, []);
-
-  // Responsive check to disable custom cursor on touch/mobile screens
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(
-        window.matchMedia("(max-width: 768px)").matches || 
-        "ontouchstart" in window || 
-        navigator.maxTouchPoints > 0
-      );
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  }, [isMobile]);
 
   if (isMobile) return null;
 
@@ -110,14 +126,12 @@ export default function CustomCursor() {
         left: 0,
         width: 32,
         height: 32,
-        // Align pointer tip (top-left of path) perfectly with position coordinates
         marginTop: -3,
         marginLeft: -3,
         pointerEvents: "none",
         zIndex: 999999,
         willChange: "transform",
         opacity: isHidden ? 0 : 1,
-        // Transition scale and rotation on hover & click
         transition: "opacity 0.25s ease-in-out",
         transform: "translate3d(-100px, -100px, 0)",
       }}
@@ -138,7 +152,6 @@ export default function CustomCursor() {
           justifyContent: "center"
         }}
       >
-        {/* Sleek Geometric solid white triangular pointer SVG */}
         <svg
           width="24"
           height="24"

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { scrollToTarget } from "./SmoothScrollProvider";
 
 /* ─────────────────────────────────────────────────────────
    SLIDE DATA DEFINITIONS & PALETTES
@@ -406,6 +407,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      className="hero-section"
       style={{
         position: "relative",
         width: "100%",
@@ -487,6 +489,7 @@ export default function Hero() {
 
       {/* ── 3. Awwwards Nominee style Fixed Vertical Badge ── */}
       <div
+        className="hero-nominee-badge"
         style={{
           position: "fixed",
           right: 0,
@@ -521,6 +524,7 @@ export default function Hero() {
 
       {/* ── 4. Main Hero Content Layout ── */}
       <div
+        className="hero-content-wrapper"
         style={{
           position: "relative",
           zIndex: 10,
@@ -533,6 +537,7 @@ export default function Hero() {
         }}
       >
         <div
+          className="hero-grid"
           style={{
             display: "flex",
             alignItems: "flex-end",
@@ -543,8 +548,9 @@ export default function Hero() {
           }}
         >
           {/* ── LEFT: Typography system ── */}
-          <div style={{ flex: "1 1 500px", maxWidth: "720px" }}>
+          <div className="hero-text-col" style={{ flex: "1 1 500px", maxWidth: "720px" }}>
             <h1
+              className="hero-title"
               style={{
                 fontFamily: "var(--font-bricolage), sans-serif",
                 fontSize: "clamp(48px, 6.6vw, 98px)",
@@ -557,6 +563,7 @@ export default function Hero() {
             >
               Every story{" "}
               <span
+                className="hero-title-deserves-span"
                 style={{
                   fontFamily: "var(--font-manrope), sans-serif",
                   fontWeight: 300,
@@ -598,8 +605,7 @@ export default function Hero() {
             <div style={{ marginTop: "clamp(32px, 5vh, 52px)" }}>
               <button
                 onClick={() => {
-                  const target = document.querySelector("#trusted-by");
-                  if (target) target.scrollIntoView({ behavior: "smooth" });
+                  scrollToTarget("#trusted-by");
                 }}
                 style={{
                   display: "inline-flex",
@@ -657,6 +663,7 @@ export default function Hero() {
 
           {/* ── RIGHT: Floating Central Preview Card ── */}
           <div
+            className="hero-card-col"
             style={{
               flex: "0 0 auto",
               display: "flex",
@@ -668,6 +675,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+              className="hero-card-container"
               style={{
                 width: "clamp(310px, 39vw, 510px)",
                 borderRadius: 16,
@@ -678,6 +686,7 @@ export default function Hero() {
                 position: "relative"
               }}
             >
+
               {/* Browser top chrome */}
               <div
                 style={{

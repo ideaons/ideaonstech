@@ -537,3 +537,63 @@ section {
   scrollbar-width: thin;
   scrollbar-color: rgba(139,92,246,0.3) transparent;
 }
+
+/* ══════════════════════════════════════════
+   MOBILE OVERRIDES (Overrides Hero inline styles on mobile screens only)
+   ══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 100px 16px 40px !important;
+    min-height: auto !important;
+  }
+  
+  .hero-content-wrapper {
+    padding: 0 !important;
+  }
+  
+  .hero-grid {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 40px !important;
+    text-align: center !important;
+  }
+  
+  .hero-text-col {
+    flex: 1 1 auto !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .hero-title {
+    font-size: clamp(32px, 8vw, 52px) !important;
+    line-height: 1.0 !important;
+  }
+  
+  .hero-title-deserves-span {
+    gap: 8px !important;
+  }
+  
+  .hero-title-deserves-span svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .hero-card-col {
+    width: 100% !important;
+    max-width: 420px !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .hero-card-container {
+    width: 100% !important;
+    max-width: 420px !important;
+  }
+  
+  .hero-nominee-badge {
+    display: none !important;
+  }
+}

@@ -2,30 +2,32 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import Link from "next/link";
 
 const CASES = [
   {
     id: "01",
-    client: "EduForward Academy",
+    client: "Greenfields International School",
     industry: "Education",
-    title: "From paper trails to digital campus",
+    title: "Manual registers to digital campus in 8 weeks",
     description:
-      "Replaced a chaotic manual system with a unified digital campus — admissions portal, student management, parent app, and fee automation.",
+      "A 2,000-student school drowning in paper registers, WhatsApp group chaos, and missed fee follow-ups. We deployed our full education platform — ERP, parent app, admissions pipeline, and AI counselor — and they went fully digital before the next academic session.",
     metrics: [
-      { value: "340%", label: "Admissions increase" },
-      { value: "12h", label: "Admin time saved/day" },
-      { value: "98%", label: "Parent satisfaction" },
+      { value: "340%", label: "Admission conversions" },
+      { value: "70%", label: "Admin workload cut" },
+      { value: "98%", label: "Parent app adoption" },
     ],
     accentColor: "#8B5CF6",
-    tag: "School Management",
+    tag: "IDEOANS Education",
+    href: "/education",
   },
   {
     id: "02",
     client: "HealthGrid Clinics",
     industry: "Healthcare",
-    title: "Modernizing patient experience at scale",
+    title: "2 clinics to 12 branches — one platform scaling everything",
     description:
-      "Built a complete telemedicine + clinic management platform handling 50,000+ monthly patient interactions across 12 locations.",
+      "HealthGrid needed a patient experience system that wouldn't break at scale. We built telemedicine, appointment scheduling, EMR sync, and a patient portal that now handles 50K+ monthly interactions across 12 locations with a 4.9★ app rating.",
     metrics: [
       { value: "50K+", label: "Monthly patients" },
       { value: "4.9★", label: "App store rating" },
@@ -38,27 +40,27 @@ const CASES = [
     id: "03",
     client: "PropNest Realty",
     industry: "Real Estate",
-    title: "A property platform that converts at 3×",
+    title: "Rebuilt the funnel. Tripled lead conversion.",
     description:
-      "Redesigned the entire digital acquisition funnel — from AI-powered property search to automated lead nurturing and agent dashboards.",
+      "PropNest was spending ₹8L/month on ads with a 0.9% conversion rate. We rebuilt their digital acquisition funnel — AI-powered property matching, WhatsApp-first lead capture, automated follow-ups, and agent dashboards. Conversion hit 3.2× in 90 days.",
     metrics: [
-      { value: "3.2×", label: "Lead conversion rate" },
-      { value: "4.8Cr", label: "Deals closed (₹)" },
-      { value: "220%", label: "Traffic growth" },
+      { value: "3.2×", label: "Lead conversion" },
+      { value: "4.8Cr", label: "Revenue (₹)" },
+      { value: "220%", label: "Organic traffic" },
     ],
     accentColor: "#FBBF24",
     tag: "Real Estate Tech",
   },
   {
     id: "04",
-    client: "FitForce Gym Chain",
+    client: "FitForce Gyms",
     industry: "Fitness",
-    title: "Scaling from 2 gyms to 18 locations",
+    title: "From 2 gyms and Excel chaos to 18 locations on autopilot",
     description:
-      "Unified membership management, automated billing, class booking, and a trainer app — the complete gym infrastructure stack.",
+      "FitForce was managing memberships in Excel, class schedules on paper, and payments manually. We unified everything — member app, trainer dashboards, automated billing, class booking, and retention analytics. They scaled 9× without adding admin staff.",
     metrics: [
       { value: "18", label: "Locations managed" },
-      { value: "91%", label: "Retention rate" },
+      { value: "91%", label: "Member retention" },
       { value: "100%", label: "Billing automated" },
     ],
     accentColor: "#34D399",
@@ -99,7 +101,7 @@ function CaseCard({ c, index }: { c: CaseType; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const cardInView = useInView(cardRef, { once: true, margin: "-80px" });
 
-  return (
+  const card = (
     <motion.div
       ref={cardRef}
       initial={{ opacity: 0, y: 48 }}
@@ -140,10 +142,10 @@ function CaseCard({ c, index }: { c: CaseType; index: number }) {
         <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", color: "rgba(255,255,255,0.35)", marginBottom: 8, textTransform: "uppercase" as const }}>
           {c.client} · {c.industry}
         </p>
-        <h3 style={{ fontFamily: "var(--font-bricolage)", fontSize: "clamp(22px, 2.8vw, 40px)", fontWeight: 800, letterSpacing: "-0.03em", color: "#FFFFFF", lineHeight: 1.1, marginBottom: 16, maxWidth: 480 }}>
+        <h3 style={{ fontFamily: "var(--font-bricolage)", fontSize: "clamp(22px, 2.8vw, 40px)", fontWeight: 800, letterSpacing: "-0.03em", color: "#FFFFFF", lineHeight: 1.1, marginBottom: 16, maxWidth: 520 }}>
           {c.title}
         </h3>
-        <p style={{ fontSize: "clamp(14px, 1vw, 16px)", color: "rgba(255,255,255,0.4)", lineHeight: 1.65, maxWidth: 440 }}>
+        <p style={{ fontSize: "clamp(14px, 1vw, 16px)", color: "rgba(255,255,255,0.4)", lineHeight: 1.65, maxWidth: 480 }}>
           {c.description}
         </p>
       </div>
@@ -164,6 +166,8 @@ function CaseCard({ c, index }: { c: CaseType; index: number }) {
       <div style={{ position: "absolute", top: -80, right: -80, width: 300, height: 300, borderRadius: "50%", background: `radial-gradient(circle, ${c.accentColor}08 0%, transparent 70%)`, pointerEvents: "none" }} />
     </motion.div>
   );
+
+  return c.href ? <Link href={c.href} style={{ textDecoration: "none", color: "inherit" }}>{card}</Link> : card;
 }
 
 export default function CaseStudies() {
@@ -191,9 +195,8 @@ export default function CaseStudies() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             style={{ fontFamily: "var(--font-bricolage)", color: "#FFFFFF", maxWidth: 640 }}
           >
-            Results that
-            <br />
-            <span className="gradient-violet">speak loudly.</span>
+            Real Problems.{" "}
+            <span className="gradient-violet">Measurable Outcomes.</span>
           </motion.h2>
         </div>
 

@@ -12,6 +12,38 @@ export function useLenis() {
   return useContext(LenisContext);
 }
 
+/**
+ * Global helper to scroll smoothly to a selector, element, or number offset.
+ * Automatically utilizes the active Lenis instance if initialized, with a safe fallback.
+ */
+export function scrollToTarget(target: string | HTMLElement | number, offset = -72) {
+  if (typeof window !== "undefined") {
+    const lenis = (window as any).lenis;
+    if (lenis) {
+      lenis.scrollTo(target, {
+        offset,
+        duration: 1.25,
+        easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+      });
+      return;
+    }
+  }
+
+  // Safe browser fallback
+  try {
+    if (typeof target === "string") {
+      const el = document.querySelector(target);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else if (target instanceof HTMLElement) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else if (typeof target === "number") {
+      window.scrollTo({ top: target, behavior: "smooth" });
+    }
+  } catch (err) {
+    console.warn("Smooth scroll fallback failed:", err);
+  }
+}
+
 export default function SmoothScrollProvider({
   children,
 }: {
@@ -42,6 +74,7 @@ export default function SmoothScrollProvider({
     });
 
     lenisRef.current = lenis;
+    (window as any).lenis = lenis;
 
     // Broadcast the Lenis instance so other components (e.g. Navbar) can use it
     window.dispatchEvent(new CustomEvent("lenis:init", { detail: lenis }));
@@ -81,6 +114,7 @@ export default function SmoothScrollProvider({
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      (window as any).lenis = undefined;
       document.documentElement.classList.remove("lenis", "lenis-smooth");
       document.removeEventListener("click", handleAnchorClick);
     };

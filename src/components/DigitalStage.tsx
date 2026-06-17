@@ -70,20 +70,20 @@ export default function DigitalStage() {
       {/* ── CSS Animations for Ticks ── */}
       <style>{`
         @keyframes blinkPurple {
-          0%, 100% { background: rgba(255, 255, 255, 0.03); box-shadow: none; }
-          50% { background: #a855f7; box-shadow: 0 0 8px #a855f7; }
+          0%, 100% { background: rgba(255, 255, 255, 0.03); opacity: 0.35; }
+          50% { background: #a855f7; opacity: 1; }
         }
         @keyframes blinkPink {
-          0%, 100% { background: rgba(255, 255, 255, 0.03); box-shadow: none; }
-          50% { background: #ec4899; box-shadow: 0 0 8px #ec4899; }
+          0%, 100% { background: rgba(255, 255, 255, 0.03); opacity: 0.35; }
+          50% { background: #ec4899; opacity: 1; }
         }
         @keyframes blinkTeal {
-          0%, 100% { background: rgba(255, 255, 255, 0.03); box-shadow: none; }
-          50% { background: #06b6d4; box-shadow: 0 0 8px #06b6d4; }
+          0%, 100% { background: rgba(255, 255, 255, 0.03); opacity: 0.35; }
+          50% { background: #06b6d4; opacity: 1; }
         }
         @keyframes blinkAmber {
-          0%, 100% { background: rgba(255, 255, 255, 0.03); box-shadow: none; }
-          50% { background: #eab308; box-shadow: 0 0 8px #eab308; }
+          0%, 100% { background: rgba(255, 255, 255, 0.03); opacity: 0.35; }
+          50% { background: #eab308; opacity: 1; }
         }
       `}</style>
 
@@ -161,7 +161,7 @@ export default function DigitalStage() {
                         background: "rgba(255, 255, 255, 0.035)",
                         animation: blinkAnim ? `${blinkAnim} 5s infinite ease-in-out` : "none",
                         animationDelay: blinkAnim ? delay : "0s",
-                        willChange: "background"
+                        willChange: "background, opacity"
                       }}
                     />
                   )}

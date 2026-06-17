@@ -256,7 +256,7 @@ const SERVICES_DB: Record<string, ServiceDetail> = {
       <div className="w-full h-full border border-orange-500/20 bg-orange-950/5 rounded-xl p-4 flex flex-col justify-between overflow-hidden">
         <span className="font-mono text-[7px] text-orange-400">STAGE-06 // LOGOMARK</span>
         <div className="my-auto text-[32px] font-black text-center text-white/95 select-none font-serif tracking-tighter">
-          S<span className="text-orange-500">*</span>X
+          S<span className="text-orange-500">T</span>X
         </div>
         <span className="font-mono text-[7px] text-white/30 text-right">GLOW: ACTIVE</span>
       </div>

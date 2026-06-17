@@ -6,7 +6,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 const TESTIMONIALS = [
   {
     quote:
-      "IDEOANS didn't just build our website — they built our entire digital infrastructure. Admissions are up 340% and we've cut admin time by 80%. They think like architects, not just developers.",
+      "We were running 3 WhatsApp groups per class, tracking attendance on registers, and losing 30% of admission leads to missed follow-ups. IDEOANS built us a complete digital campus in 8 weeks. Admissions tripled. Parent complaints dropped to near zero. The AI counselor alone handles 200+ parent queries before our office opens.",
     name: "Rajesh Mehta",
     role: "Principal",
     org: "Greenfields International School",
@@ -16,7 +16,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "We went from 2 clinic branches to 12 in 18 months — and IDEOANS's platform scaled effortlessly with us. The patient experience improvements alone justified the entire investment.",
+      "When we expanded from 2 clinics to 12, every other vendor said we'd need to rebuild from scratch. IDEOANS's platform scaled without blinking — 50K monthly patients, sub-2-second load times, and a 62% reduction in no-shows through automated reminders. Our 4.9★ app rating speaks for itself.",
     name: "Dr. Priya Sharma",
     role: "Director",
     org: "HealthGrid Clinics",
@@ -26,7 +26,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "Our lead conversion tripled after they rebuilt our digital acquisition funnel. The team understands real estate deeply — they didn't need hand-holding. Just results.",
+      "We were burning ₹8 lakhs a month on ads with a 0.9% conversion rate. IDEOANS rebuilt our entire acquisition funnel — AI property matching, WhatsApp-first capture, automated nurture sequences. In 90 days, conversion hit 3.2×. They didn't just build tech, they understood real estate.",
     name: "Ankit Joshi",
     role: "Co-founder",
     org: "PropNest Realty",
@@ -36,7 +36,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "From chaotic WhatsApp group management to a unified member app — IDEOANS transformed how we operate. Our retention went from 68% to 91%. The ROI is insane.",
+      "Two gyms, Excel sheets for memberships, and a notebook for class schedules — that's where we started. Now we're at 18 locations, 91% retention, and 100% automated billing. We scaled 9× without hiring a single admin. IDEOANS built the infrastructure that made it possible.",
     name: "Sneha Kapoor",
     role: "Owner",
     org: "FitForce Gyms",

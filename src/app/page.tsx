@@ -10,6 +10,7 @@ import Process from "@/components/Process";
 import Technology from "@/components/Technology";
 import Testimonials from "@/components/Testimonials";
 import DigitalStage from "@/components/DigitalStage";
+import Founder from "@/components/Founder";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
@@ -28,6 +29,7 @@ export default function Home() {
         <Technology />
         <Testimonials />
         <DigitalStage />
+        <Founder />
         <CTASection />
       </main>
       <Footer />

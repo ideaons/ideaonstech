@@ -22,6 +22,10 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ideaons.codes"),
+  alternates: {
+    canonical: "/",
+  },
   title: "IDEOANS — Digital Infrastructure for Every Business",
   description:
     "We build world-class digital infrastructure for schools, colleges, gyms, healthcare, real estate, startups, and enterprises. Websites, AI automation, CRM systems, and growth infrastructure.",
@@ -76,6 +80,46 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col" style={{ background: "#050505", color: "#FFFFFF" }}>
+        {/* JSON-LD Structured Data for Google Knowledge Graph (100cr+ Enterprise Grade) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "IDEOANS",
+              "url": "https://ideaons.codes",
+              "logo": "https://ideaons.codes/founder.jpg",
+              "sameAs": [
+                "https://github.com/ideaons",
+                "https://linkedin.com/company/ideaons"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "amit@ideaons.codes",
+                "contactType": "customer service"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "IDEOANS",
+              "image": "https://ideaons.codes/founder.jpg",
+              "@id": "https://ideaons.codes/#service",
+              "url": "https://ideaons.codes",
+              "priceRange": "$$$$",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "IN"
+              }
+            })
+          }}
+        />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <SmoothScrollProvider>
             <CustomCursor />

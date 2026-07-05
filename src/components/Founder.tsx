@@ -165,7 +165,7 @@ export default function Founder() {
                     marginBottom: 2,
                   }}
                 >
-                  Amit Raghavan
+                  Mr.Amit kumar
                 </h3>
                 <p
                   style={{
